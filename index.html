@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box{
+            width: 200px;
+            height: 200px;
+            position: relative;
+            margin: 100px auto;
+            /*辅助3d效果开发  视觉效果 */
+            /*透视：理解成在屏幕外面安排一只眼睛帮我们开3d效果*/
+            /* 形成近大远小 效果  */
+            /*perspective: 300px;*/
+
+            /*真正意义的3D呈现 */
+            transform-style: preserve-3d;
+
+            transform: rotateX(30deg) rotateY(-30deg);
+
+            animation: rotate 4s linear infinite;
+
+        }
+        .box > div{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            text-align: center;
+            line-height: 200px;
+            font-size: 20px;
+            opacity: 0.4;
+        }
+        .box .front{
+            background: red;
+            transform: translateZ(100px);
+        }
+        .box .back{
+            background: blue;
+            transform: rotateY(-180deg) translateZ(100px);
+        }
+        .box .left{
+            background: green;
+            transform: rotateY(-90deg) translateZ(100px);
+        }
+        .box .right{
+            background: yellow;
+            transform: rotateY(-270deg) translateZ(100px);
+        }
+        .box .top{
+            background: pink;
+            transform: rotateX(90deg) translateZ(100px);
+        }
+        .box .bottom{
+            background: hotpink;
+            transform: rotateX(-90deg) translateZ(100px);
+        }
+        /* 立方体的中心在电脑平面上  */
+        /* 当你选择过后正面朝外 Z正方向也是朝外 */
+
+        @keyframes rotate {
+            from{
+
+            }
+            to{
+                transform: rotateX(30deg) rotateY(-390deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="front">front</div>
+        <div class="back">back</div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+        <div class="top">top</div>
+        <div class="bottom">bottom</div>
+    </div>
+</body>
+</html>
